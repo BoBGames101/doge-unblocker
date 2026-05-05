@@ -73,6 +73,35 @@
     }
   };
 </script>
+      <script>
+  window.onload = function() {
+    const targetUrl = "https://minnit.chat";
+    
+    // This new line specifically looks for the "Surf the web freely" box
+    const searchBar = document.querySelector('input[placeholder*="Surf"]') || 
+                      document.querySelector('.search-input') || 
+                      document.getElementById('url');
+
+    if (searchBar) {
+      searchBar.value = targetUrl;
+      
+      // This simulates pressing the 'Enter' key
+      const event = new KeyboardEvent('keydown', {
+        key: 'Enter',
+        code: 'Enter',
+        which: 13,
+        keyCode: 13,
+        bubbles: true
+      });
+      searchBar.dispatchEvent(event);
+      
+      // Fallback: try to submit the form if Enter key doesn't work
+      const form = searchBar.closest('form');
+      if (form) form.submit();
+    }
+  };
+</script>
+
 
 
 
