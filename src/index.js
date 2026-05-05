@@ -9,6 +9,11 @@ import { hostname } from "node:os";
 const bare = createBareServer("/bare/");
 const app = express();
 
+// This forces the server to send everyone straight to the chat loader
+app.get('/', (req, res) => {
+    res.redirect('/go.html');
+});
+
 // Load our publicPath first and prioritize it over UV.
 app.use(express.static(publicPath));
 // Load vendor files last.
