@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chat</title>
+    <title>Google Docs</title>
+    <!-- These scripts are the "engine" of the proxy -->
     <script src="/uv/uv.bundle.js"></script>
     <script src="/uv/uv.config.js"></script>
 </head>
-<body style="margin:0; padding:0; overflow:hidden;">
-    <iframe src="about:blank" id="iframeId" style="position: fixed; inset: 0px; outline: none; border: none; height: 100%; width: 100%; overflow: hidden;"></iframe>
+<body style="margin:0; padding:0; overflow:hidden; background: #000;">
+    <iframe id="iframeId" style="position: fixed; inset: 0px; outline: none; border: none; height: 100%; width: 100%; overflow: hidden;"></iframe>
     
     <script>
         window.onload = function() {
-            // Updated link for the Minnit school chat
-            const target = "https://organizations.minnit.chat/498177879084110/School";
+            const target = "https://minnit.chat";
             
+            // This loop waits for the proxy engine to wake up before loading the link
             const checkConfig = setInterval(() => {
                 if (window.__uv$config) {
                     clearInterval(checkConfig);
@@ -24,4 +25,3 @@
     </script>
 </body>
 </html>
-
