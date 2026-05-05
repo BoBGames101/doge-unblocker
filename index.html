@@ -56,5 +56,25 @@
             <p class="footer__text">&copy; 2023 Doge Network. All rights reserved.</p>
          </div>
       </footer>
+      <script>
+  window.onload = function() {
+    // 1. Enter the site you want to unblock below
+    const targetUrl = "https://organizations.minnit.chat/498177879084110/School"; 
+    // 2. This finds the search bar and the Go button
+    const searchBar = document.querySelector('input[type="text"]') || document.getElementById('url');
+    
+    if (searchBar) {
+      searchBar.value = targetUrl;
+      // 3. This automatically "clicks" enter for you
+      const form = searchBar.closest('form');
+      if (form) {
+        form.submit();
+      }
+    }
+  };
+</script>
+
+
+
    </body>
 </html>
