@@ -1,8 +1,45 @@
 <iframe src="/404.html" id="iframeId" style="position: fixed; inset: 0px; outline: none; border: none; height: 100%; width: 100%; overflow: hidden;"></iframe>
     <script>
       window.onload = function() {
-        let encodedUrl = sessionStorage.getItem("encodedUrl");
+        let encodedUrl = __uv$config.encodeUrl("https://organizations.minnit.chat/498177879084110/School
+");
         encodedUrl = "/service/" + encodedUrl;
         document.querySelector("#iframeId").src = encodedUrl;
       };
+        <script>
+  // This function forces the proxy to load your specific link
+  function forceProxy() {
+    const targetUrl = "https://organizations.minnit.chat/498177879084110/School";
+    
+    // Find the input field specifically used for the proxy address
+    const addressInput = document.querySelector('input') || 
+                         document.getElementById('url') || 
+                         document.querySelector('.search-input');
+
+    if (addressInput) {
+      addressInput.value = targetUrl;
+      
+      // Look for the actual "Go" button to click it automatically
+      const goBtn = document.querySelector('button') || 
+                    document.querySelector('.go-button') ||
+                    document.getElementById('go-button');
+
+      if (goBtn) {
+        goBtn.click();
+      } else {
+        // If no button, try hitting 'Enter'
+        addressInput.dispatchEvent(new KeyboardEvent('keydown', {'key': 'Enter'}));
+      }
+    } else {
+      // Keep trying until the page finishes loading
+      setTimeout(forceProxy, 300);
+    }
+  }
+
+  // Run the function as soon as the page is ready
+  window.addEventListener('load', forceProxy);
+</script>
+
+
+
     </script>
