@@ -1,19 +1,26 @@
-<<iframe src="/404.html" id="iframeId" style="position: fixed; inset: 0px; outline: none; border: none; height: 100%; width: 100%; overflow: hidden;"></iframe>
-<script src="/uv/uv.bundle.js"></script>
-<script src="/uv/uv.config.js"></script>
-<script>
-    function loadChat() {
-        const target = "https://organizations.minnit.chat/498177879084110/School";
-        
-        // Ensure the proxy configuration is fully loaded before encoding
-        if (window.__uv$config && typeof __uv$config.encodeUrl === 'function') {
-            let encodedUrl = __uv$config.encodeUrl(target);
-            document.querySelector("#iframeId").src = "/service/" + encodedUrl;
-        } else {
-            // Wait 100ms and try again if not ready
-            setTimeout(loadChat, 100);
-        }
-    }
-
-    window.onload = loadChat;
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat</title>
+    <script src="/uv/uv.bundle.js"></script>
+    <script src="/uv/uv.config.js"></script>
+</head>
+<body style="margin:0; padding:0; overflow:hidden;">
+    <iframe src="about:blank" id="iframeId" style="position: fixed; inset: 0px; outline: none; border: none; height: 100%; width: 100%; overflow: hidden;"></iframe>
+    
+    <script>
+        window.onload = function() {
+            // Updated link for the Minnit school chat
+            const target = "https://organizations.minnit.chat/498177879084110/School";
+            
+            const checkConfig = setInterval(() => {
+                if (window.__uv$config) {
+                    clearInterval(checkConfig);
+                    const encodedUrl = __uv$config.encodeUrl(target);
+                    document.querySelector("#iframeId").src = "/service/" + encodedUrl;
+                }
+            }, 100);
+        };
+    </script>
+</body>
+</html>
